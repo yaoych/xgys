@@ -5,6 +5,7 @@ import kotlin.math.sin
 
 open class Matrix(val rows: Int, val cols: Int) {
     val data: FloatArray
+
     init {
         assert(rows > 0)
         assert(cols > 0)
@@ -12,13 +13,13 @@ open class Matrix(val rows: Int, val cols: Int) {
     }
 }
 
-class Matrix4: Cloneable {
+class Matrix4 : Cloneable {
 
     val data = FloatArray(16)
 
     init {
-        for (i in 0 until 4) {
-            for (j in 0 until 4) {
+        for (i in 0..4) {
+            for (j in 0..4) {
                 this[i, j] = if (i == j) 1.0f else 0.0f
             }
         }
@@ -30,33 +31,33 @@ class Matrix4: Cloneable {
         return ret
     }
 
-    inline operator fun set(row: Int, col: Int, value: Float) {
+    operator fun set(row: Int, col: Int, value: Float) {
         data[row * 4 + col] = value
     }
 
-    inline operator fun get(row: Int, col: Int) = data[row * 4 + col]
+    operator fun get(row: Int, col: Int) = data[row * 4 + col]
 
-    inline operator fun plus(that: Matrix4) :Matrix4 {
+    operator fun plus(that: Matrix4): Matrix4 {
         val sum = Matrix4()
-        for (i in 0 .. 4) {
-            for (j in 0 .. 4) {
+        for (i in 0..4) {
+            for (j in 0..4) {
                 sum[i, j] = this[i, j] + that[i, j]
             }
         }
         return sum
     }
 
-    inline operator fun minus(that: Matrix4) :Matrix4 {
+    operator fun minus(that: Matrix4): Matrix4 {
         val sum = Matrix4()
-        for (i in 0 .. 4) {
-            for (j in 0 .. 4) {
+        for (i in 0..4) {
+            for (j in 0..4) {
                 sum[i, j] = this[i, j] - that[i, j]
             }
         }
         return sum
     }
 
-    inline operator fun times(that: Matrix4) :Matrix4 {
+    operator fun times(that: Matrix4): Matrix4 {
         val sum = Matrix4()
         for (i in 0..4) {
             for (j in 0..4) {
@@ -70,7 +71,7 @@ class Matrix4: Cloneable {
         return sum
     }
 
-    inline operator fun times(that: Vector4) :Vector4 {
+    operator fun times(that: Vector4): Vector4 {
         val ret = Vector4()
         for (i in 0..4) {
             var a = 0.0f
@@ -82,7 +83,7 @@ class Matrix4: Cloneable {
         return ret
     }
 
-    inline operator fun times(that: Float) :Matrix4 {
+    operator fun times(that: Float): Matrix4 {
         val ret = Matrix4()
         for (i in 0..4) {
             for (j in 0..4) {
@@ -92,8 +93,37 @@ class Matrix4: Cloneable {
         return ret
     }
 
+    fun inverse() : Matrix4 {
+        val mat = clone()
+        val mat2 = identity()
+        for(j in 0..4) {
+            val firstRowIndex = (j..4).first { i -> mat[i, j] != 0.0f }
+            mat.exchangeRow(0, firstRowIndex)
+            for(i in j+1..4) plusRow(i, j, mat[i, j] / mat[j, j])
+        }
+    }
+
+    fun exchangeRow(i:Int, j:Int) {
+        val temp = floatArrayOf(this[i, 0], this[i, 1], this[i, 2], this[i, 3])
+        this[i, 0] = this[j, 0]
+        this[i, 1] = this[j, 1]
+        this[i, 2] = this[j, 2]
+        this[i, 3] = this[j, 3]
+        this[j, 0] = temp[0]
+        this[j, 1] = temp[1]
+        this[j, 2] = temp[2]
+        this[j, 3] = temp[3]
+    }
+
+    fun plusRow(i:Int, j:Int, factor: Float) {
+        this[i, 0] = this[j, 0] * factor
+        this[i, 1] = this[j, 1] * factor
+        this[i, 2] = this[j, 2] * factor
+        this[i, 3] = this[j, 3] * factor
+    }
+
     companion object {
-        inline fun identity(): Matrix4 {
+        fun identity(): Matrix4 {
             val mat = Matrix4()
             for (i in 0..4) {
                 for (j in 0..4) {
@@ -103,7 +133,7 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun translate(vector: Vector3): Matrix4 {
+        fun translate(vector: Vector3): Matrix4 {
             val mat = identity()
             mat[0, 3] = vector.x
             mat[1, 3] = vector.y
@@ -111,7 +141,7 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun scale(vector: Vector3) : Matrix4 {
+        fun scale(vector: Vector3): Matrix4 {
             val mat = identity()
             mat[0, 0] = vector.x
             mat[1, 1] = vector.y
@@ -119,7 +149,7 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun rotateByX(angle: Float) :Matrix4 {
+        fun rotateByX(angle: Float): Matrix4 {
             val mat = identity()
             val cosa = cos(angle)
             val sina = sin(angle)
@@ -130,7 +160,7 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun rotateByY(angle: Float) :Matrix4 {
+        fun rotateByY(angle: Float): Matrix4 {
             val mat = identity()
             val cosa = cos(angle)
             val sina = sin(angle)
@@ -141,7 +171,7 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun rotateByZ(angle: Float) :Matrix4 {
+        fun rotateByZ(angle: Float): Matrix4 {
             val mat = identity()
             val cosa = cos(angle)
             val sina = sin(angle)
@@ -152,12 +182,13 @@ class Matrix4: Cloneable {
             return mat
         }
 
-        inline fun symmetry(x:Boolean, y:Boolean, z:Boolean) :Matrix4 {
+        fun symmetry(x: Boolean, y: Boolean, z: Boolean): Matrix4 {
             val mat = identity()
             if (x) mat[0, 0] = -1.0f
             if (y) mat[1, 1] = -1.0f
             if (z) mat[2, 2] = -1.0f
             return mat
         }
+
     }
 }
