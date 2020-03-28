@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="71ffa741-e05b-4898-8e21-39aab6d54653" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZiKWUo8hfL0fUsr8MECKywX7KI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71ffa741-e05b-4898-8e21-39aab6d54653" name="Default Changelist" comment="" />
+      <created>1585316505282</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585316505282</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1585370959030">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585370959030" />
+    <state x="463" y="165" key="SettingsEditor" timestamp="1585321166162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585321166162" />
+    <state x="652" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1585363263604">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="652" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585363263604" />
+    <state x="334" y="127" key="new project wizard" timestamp="1585319855227">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="127" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585319855227" />
+    <state x="701" y="167" key="refactoring.ChangeSignatureDialog" timestamp="1585364064464">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="167" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585364064464" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585365601665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585365601665" />
+  </component>
+</project>
